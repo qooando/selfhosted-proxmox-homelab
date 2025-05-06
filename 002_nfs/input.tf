@@ -8,6 +8,11 @@ variable "homelab_vars_file" {
   default = "homelab.vars.yaml"
 }
 
+variable "pihole_vars_file" {
+  type    = string
+  default = "pihole.vars.yaml"
+}
+
 variable "nfs" {
   type = object({})
   default = {
@@ -15,10 +20,6 @@ variable "nfs" {
     sub_hostname = "nfs"
     container_id = 102
   }
-}
-variable "pihole_vars_file" {
-  type    = string
-  default = "pihole.vars.yaml"
 }
 
 data "local_file" "homelab" {
@@ -38,7 +39,6 @@ locals {
     {
       hostname     = "${var.nfs.sub_hostname}.${local.homelab.hostname}"
       ssh_username = "root"
-      container_id = 102
     }
   )
 }
