@@ -118,7 +118,7 @@ Here you need some configuration.
    ```conf
    AllowedIPs = 10.10.10.0/24, 192.168.0.0/24
    ```
-   
+
 4. Edit `configs/wg-dashboard.ini` with the correct IP ranges
    ```conf
    peer_global_dns = 192.168.0.101 # pihole dns
@@ -140,4 +140,31 @@ Here you need some configuration.
 
 The configuration generates some artifacts in the build folder, including the qrcode you
 can use to test the vpn with your phone.
+
+## Kubernetes
+
+This module setups a kubernetes VM used for userspace applications.
+
+1. download the image (I use an ubuntu server)
+   ```bash
+   cd 200_kubernetes/image
+   bash download.sh
+   ```
+
+2. apply terraform
+   ```bash
+   cd ..
+   terraform init
+   terraform apply
+   ```
+
+You will obtain a kubernetes virtual machine ready for deployment
+and configuration files will be available in the build.
+
+You can use the exported kubeconfig to interact with the cluster
+
+```bash
+export KUBECONFIG=./build/kubeconfig.yaml
+kubectl get all -A
+```
 
