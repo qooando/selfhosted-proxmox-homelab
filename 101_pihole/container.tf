@@ -34,7 +34,7 @@ resource "proxmox_virtual_environment_container" "pihole" {
   }
 
   initialization {
-    hostname = local.pihole.sub_hostname
+    hostname = "pihiole"
 
     ip_config {
       ipv4 {
