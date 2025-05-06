@@ -1,14 +1,13 @@
 # Selfhosted proxmox home lab
 
-This is a repository with some useful configuration to put up a simple
-selfhosted homelab.
+This is a repository with some useful configurations to provision a simple
+self-hosted homelab.
 
-> This is a personal project, I will only add software I personally used and tested, but feel free to comment.
-> Maybe some manual tweaks are required.
+> This is a personal project, I will only add software I personally use, but feel free to comment, fork.
 
 # Setup
 
-1. Install proxmox on a local server
+Install proxmox on a local server
 
 We assume to have an empty proxmox installation on a local machine, e.g. a minipc.
 I use a minipc with 16GB RAM and 500GB disk.
