@@ -29,7 +29,7 @@ variable "registry" {
     container_id = number
   })
   default = {
-    ip           = "192.168.0.5"
+    ip           = "192.168.0.103"
     sub_hostname = "docker"
     port         = 5000
     container_id = 103
