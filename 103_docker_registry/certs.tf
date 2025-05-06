@@ -51,7 +51,7 @@ resource "tls_cert_request" "docker-client" {
 
   subject {
     common_name  = "my-docker-client"
-    organization = "Qooando"
+    organization = local.homelab.organization
   }
 }
 
