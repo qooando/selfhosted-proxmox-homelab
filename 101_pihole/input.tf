@@ -8,6 +8,10 @@ variable "homelab_vars_file" {
   default = "proxmox.vars.yaml"
 }
 
+data "local_file" "homelab" {
+  filename = "${local.build_path}/${var.homelab_vars_file}"
+}
+
 variable "pihole" {
   type = object({
     ip           = string
@@ -15,13 +19,10 @@ variable "pihole" {
     container_id = number
   })
   default = {
-    ip           = "192.168.0.3"
+    ip           = "192.168.0.101"
     sub_hostname = "pihole"
     container_id = 101
   }
-}
-data "local_file" "homelab" {
-  filename = "${local.build_path}/${var.homelab_vars_file}"
 }
 
 locals {
