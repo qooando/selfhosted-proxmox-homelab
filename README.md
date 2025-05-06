@@ -102,7 +102,7 @@ This modules initialize a docker registry.
 
 ## Wireguard
 
-This module install a wireguard vpn server in the local network.
+This module installs a wireguard vpn server in the local network.
 
 Here you need some configuration.
 
@@ -114,13 +114,16 @@ Here you need some configuration.
 
 2. Open the `udp_port` set in the configuration on the router, and route incoming requests to your server ip
 
-3. Then you can build the image
+3. Edit `configs/clients.conf` with the correct IP ranges 
+4. Edit `configs/wg-dashboard.ini` with the correct IP ranges
+
+4. Then you can build the image
     ```bash
     cd 103_docker_registry/images
     bash build_distro.sh
     ```
 
-4. And apply configuration
+5. And apply configuration
    ```bash
    cd ..
    terraform init
