@@ -324,7 +324,7 @@ You need to configure ldap manually, configuration values are available in `cali
 
 This modules installs a homepage with links.
 
-You can access it at `https://hoempage.homelab.local`
+You can access it at `https://homepage.homelab.local`
 
 ```bash
 cd 300_homepage
