@@ -5,7 +5,7 @@ locals {
   nfs = yamldecode(file("${local.build_path}/nfs.vars.yaml"))
   docker_registry = yamldecode(file("${local.build_path}/docker-registry.vars.yaml"))
   kubernetes = yamldecode(file("${local.build_path}/kubernetes.vars.yaml"))
-  kubernetes_init = "${local.build_path}/kubernetes.init.vars.yaml"
+  kubernetes_init = yamldecode(file("${local.build_path}/kubernetes.init.vars.yaml"))
   redis = {
     default_username = "redis"
   }
