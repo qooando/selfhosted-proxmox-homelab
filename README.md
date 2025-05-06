@@ -62,4 +62,16 @@ You can customize the default image in `001_pihole/image` and build it again.
 Furthermore, you can update configuration using terraform,
 edit it in `001_pihole/configs/pihole.toml`, then reapply terraform.
 
+## NFS
+
+This modules creates a nfs share we will use later for kubernetes volumes.
+
+```bash
+cd 002_nfs
+cd images
+bash build_distro.sh
+cd ..
+terraform init
+terraform apply
+```
 

@@ -1,0 +1,1 @@
+/srv/share *(sync,sec=sys,insecure,rw,nohide,no_subtree_check,no_root_squash)
