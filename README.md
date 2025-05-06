@@ -77,7 +77,7 @@ terraform apply
 
 ## Docker
 
-This modules initialize a docker registry.
+This modules initializes a docker registry.
 
 1. You need to customize docker configuration in `103_docker_registry/configs/config.yaml`
    and substitute the following lines
