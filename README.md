@@ -304,3 +304,18 @@ terraform apply
 
 > Note: we create a new nextcloud image from scratch because none of default install methods works for local case
 
+## Calibre Web Automated
+
+This modules installs calibre web automated.
+
+You can access calibre at `https://books.homelab.local`.
+
+```bash
+cd 223_books
+terraform init
+terraform apply
+```
+
+### LDAP
+
+You need to configure ldap manually, configuration values are available in `calibre.vars.yaml` file.
