@@ -220,6 +220,8 @@ terraform init
 terraform apply
 ```
 
+You can access authentik at `https://auth.homelab.local`.
+
 ## Authentik configuration
 
 This module configures authentik with users and other common providers,
@@ -260,3 +262,16 @@ and in `vars.tf`
 this is the hardcoded identifier of the kubernetes integration. You can
 eventually remove `service_connection` and insert it manually later from the gui.
 
+## Immich
+
+This module installs immich photo manager.
+It also configures oauth2 authentication, thus
+you can login immediately with configured users.
+
+You can access immich at `https://photos.homelab.local`.
+
+```bash
+cd 220_immich
+terraform init
+terraform apply
+```
