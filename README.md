@@ -275,3 +275,13 @@ cd 220_immich
 terraform init
 terraform apply
 ```
+
+## Gitea
+
+This module installs gitea with oauth2 authentiction.
+
+```bash
+cd 221_gitea
+terraform init
+terraform apply
+```
