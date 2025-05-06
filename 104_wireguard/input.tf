@@ -27,8 +27,15 @@ variable "wireguard" {
     sub_hostname        = string
     container_id        = number
     udp_port            = number
-    public_gateway_host = "yourhost.ddns.net" # ddns with no-ip
+    public_gateway_host = string
   })
+  default = {
+    ip                  = "192.168.0.104"
+    sub_hostname        = "wireguard"
+    container_id        = 104
+    udp_port            = 989
+    public_gateway_host = "yourhost.ddns.net" # ddns with no-ip
+  }
 }
 
 locals {
