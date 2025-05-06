@@ -278,10 +278,29 @@ terraform apply
 
 ## Gitea
 
-This module installs gitea with oauth2 authentiction.
+This module installs gitea with oauth2 authentication.
+
+You can access gitea at `https://git.homelab.local`.
 
 ```bash
 cd 221_gitea
 terraform init
 terraform apply
 ```
+
+## Nextcloud
+
+This module installs nextcloud with oauth2 authentication
+
+You can access nextcloud at `https://drive.homelab.local`.
+
+```bash
+cd 222_drive/image/nextcloud
+bash downlod.sh
+cd ../..
+terraform init
+terraform apply
+```
+
+> Note: we create a new nextcloud image from scratch because none of default install methods works for local case
+
