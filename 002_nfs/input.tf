@@ -14,7 +14,11 @@ variable "pihole_vars_file" {
 }
 
 variable "nfs" {
-  type = object({})
+  type = object({
+    ip = string
+    sub_hostname = string
+    container_id = number
+  })
   default = {
     ip           = "192.168.0.4"
     sub_hostname = "nfs"
