@@ -174,8 +174,8 @@ This module initializes kubernetes cluster with some utilities:
 - traefik
 - cert-manager
 - trust-manager
-- kyverno (useful to attach root ca to all containers)
-- nfs provisioner
+- kyverno (used to attach root ca to all pods)
+- nfs provisioner (used for persistence)
 
 ```bash
 cd 201_kub_init
@@ -183,3 +183,17 @@ terraform init
 terraform apply
 ```
 
+## PostgreSQL
+
+This module installs postgresql on the cluster.
+
+I provides a custom image in order to install custom postgres modules
+used by other applications.
+
+> You need to install `buildah` and `skopeo`, used by the `modules/buildah` to build the image
+
+```bash
+cd 202_postgres
+terraform init
+terraform apply
+```
