@@ -1,0 +1,43 @@
+version: 0.1
+log:
+  level: debug
+  formatter: text
+  # If you prefer logging to a file, change 'formatter' to "text" or "json",
+  # remove 'hooks', and uncomment 'logfile' in /etc/conf.d/docker-registry.
+#  formatter: syslog
+#  hooks:
+#    - type: syslog
+storage:
+  cache:
+    blobdescriptor: inmemory
+  filesystem:
+    rootdirectory: /var/lib/docker-registry
+  delete:
+    enabled: true
+http:
+  addr: :5000
+  headers:
+    X-Content-Type-Options: [ nosniff ]
+  # Enable the debug endpoint. This may be used by the init script to check if
+  # the daemon is healthy. See healthcheck_url in /etc/conf.d/docker-registry.
+  debug:
+    addr: localhost:5001
+  tls:
+    certificate: /etc/docker-registry/docker.crt
+    key: /etc/docker-registry/docker.key
+
+#auth:
+#  htpasswd:
+#    realm: basic-realm
+#    path: /etc/docker-registry
+health:
+  storagedriver:
+    enabled: true
+    interval: 10s
+    threshold: 3
+
+# pull through
+proxy:
+  remote-url: "https://index.docker.io/v1"
+  username: "MISSING_USERNAME"
+  password: "MISSING_PASSWORD"

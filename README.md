@@ -52,7 +52,7 @@ terraform apply
 ```
 
 Output artifacts include `pihole.vars.yaml` and pihole certificates used for the public interface.
-After installation you can access pihole gui at `https://pihole.homelab.local` 
+After installation you can access pihole gui at `https://pihole.homelab.local`
 
 ### Customize pihole
 
@@ -68,6 +68,33 @@ This modules creates a nfs share we will use later for kubernetes volumes.
 
 ```bash
 cd 002_nfs
+cd images
+bash build_distro.sh
+cd ..
+terraform init
+terraform apply
+```
+
+## Docker
+
+This modules initialize a docker registry.
+
+You need to customize docker configuration in `003_docker_registry/configs/config.yaml`
+and substitute the following lines
+
+```yaml
+proxy:
+  remote-url: "https://index.docker.io/v1"
+  username: "MISSING_USERNAME"
+  password: "MISSING_PASSWORD"
+```
+
+with your login data.
+
+Then you can create the image and apply terraform.
+
+```bash
+cd 003_docker_registry
 cd images
 bash build_distro.sh
 cd ..
