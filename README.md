@@ -6,7 +6,7 @@ selfhosted homelab.
 > This is a personal project, I will only add software I personally used and tested, but feel free to comment.
 > Maybe some manual tweaks are required.
 
-## Setup
+# Setup
 
 1. Install proxmox on a local server
 
@@ -21,14 +21,45 @@ Modules should be applied in order.
 Each module self contains its own configurations and outputs
 artifacts to `build/` directory where other modules can read them.
 
-### Initialization
+## Initialization
 
 This module creates a default ca certificate for the cluster
-and exports some default values `homelab.vars.yaml`
+and exports some default values to `homelab.vars.yaml`
 
-```
+Check `input.tf` for default values, you can change them to your will (
+see: https://developer.hashicorp.com/terraform/language/values/variables)
+
+```bash
 cd 000_init
+terraform init
 terraform apply
 ```
+
+## Pi-hole
+
+In order to resolve custom dns for the homelab, the first thing after
+the certificate is to install pihole.
+
+This module prepares an alpine lxc image and runs it in a container on proxmox.
+
+```bash
+cd 001_pihole
+cd images
+bash build_distro.sh
+cd ..
+terraform init
+terraform apply
+```
+
+Output artifacts include `pihole.vars.yaml` and pihole certificates used for the public interface.
+After installation you can access pihole gui at `https://pihole.homelab.local` 
+
+### Customize pihole
+
+I use a custom alpine image built with `distrobuild`.
+You can customize the default image in `001_pihole/image` and build it again.
+
+Furthermore, you can update configuration using terraform,
+edit it in `001_pihole/configs/pihole.toml`, then reapply terraform.
 
 
