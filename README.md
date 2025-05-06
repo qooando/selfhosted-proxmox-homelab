@@ -43,7 +43,7 @@ the certificate is to install pihole.
 This module prepares an alpine lxc image and runs it in a container on proxmox.
 
 ```bash
-cd 001_pihole
+cd 101_pihole
 cd images
 bash build_distro.sh
 cd ..
@@ -57,17 +57,17 @@ After installation you can access pihole gui at `https://pihole.homelab.local`
 ### Customize pihole
 
 I use a custom alpine image built with `distrobuild`.
-You can customize the default image in `001_pihole/image` and build it again.
+You can customize the default image in `101_pihole/image` and build it again.
 
 Furthermore, you can update configuration using terraform,
-edit it in `001_pihole/configs/pihole.toml`, then reapply terraform.
+edit it in `101_pihole/configs/pihole.toml`, then reapply terraform.
 
 ## NFS
 
 This modules creates a nfs share we will use later for kubernetes volumes.
 
 ```bash
-cd 002_nfs
+cd 102_nfs
 cd images
 bash build_distro.sh
 cd ..
@@ -79,26 +79,54 @@ terraform apply
 
 This modules initialize a docker registry.
 
-You need to customize docker configuration in `003_docker_registry/configs/config.yaml`
-and substitute the following lines
+1. You need to customize docker configuration in `103_docker_registry/configs/config.yaml`
+   and substitute the following lines
+    ```yaml
+    proxy:
+      remote-url: "https://index.docker.io/v1"
+      username: "MISSING_USERNAME"
+      password: "MISSING_PASSWORD"
+    ```
+   with your login data.
 
-```yaml
-proxy:
-  remote-url: "https://index.docker.io/v1"
-  username: "MISSING_USERNAME"
-  password: "MISSING_PASSWORD"
-```
+2. Then you can create the image and apply terraform.
 
-with your login data.
+    ```bash
+    cd 103_docker_registry
+    cd images
+    bash build_distro.sh
+    cd ..
+    terraform init
+    terraform apply
+    ```
 
-Then you can create the image and apply terraform.
+## Wireguard
 
-```bash
-cd 003_docker_registry
-cd images
-bash build_distro.sh
-cd ..
-terraform init
-terraform apply
-```
+This module install a wireguard vpn server in the local network.
+
+Here you need some configuration.
+
+1. Check the `input.tf` file and substitute
+    ```terraform
+    public_gateway_host = "yourhost.ddns.net" # ddns with no-ip
+    ```
+   with your public hostname. I configure a no-ip address because my home network has a dynamic ip.
+
+2. Open the `udp_port` set in the configuration on the router, and route incoming requests to your server ip
+
+3. Then you can build the image
+    ```bash
+    cd 103_docker_registry/images
+    bash build_distro.sh
+    ```
+
+4. And apply configuration
+   ```bash
+   cd ..
+   terraform init
+   terraform apply
+   ```
+
+The configuration generates some artifacts in the build folder, including the qrcode you
+can use to test the vpn with your phone.
 

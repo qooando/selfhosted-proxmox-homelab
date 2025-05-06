@@ -1,0 +1,18 @@
+#!/sbin/openrc-run
+description="Wireguard Dashboard"
+
+depend() {
+    need net
+    need localmount
+    need wireguard0
+}
+
+start() {
+    cd /opt/WGDashboard/src
+    ./wgd.sh start
+}
+
+stop() {
+    cd /opt/WGDashboard/src
+    ./wgd.sh stop
+}

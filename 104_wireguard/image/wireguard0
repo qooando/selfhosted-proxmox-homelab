@@ -1,0 +1,15 @@
+#!/sbin/openrc-run
+description="wg-quick wg0"
+
+depend() {
+    need net
+    need localmount
+}
+
+start() {
+    wg-quick up wg0
+}
+
+stop() {
+    wg-quick down wg0
+}
