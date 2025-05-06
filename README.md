@@ -171,6 +171,7 @@ kubectl get all -A
 ## Kubernetes initialization
 
 This module initializes kubernetes cluster with some utilities:
+
 - traefik
 - cert-manager
 - trust-manager
@@ -197,3 +198,14 @@ cd 202_postgres
 terraform init
 terraform apply
 ```
+
+## Redis
+
+This module installs redis on the cluster.
+
+```bash
+cd 203_postgres
+terraform init
+terraform apply
+```
+
