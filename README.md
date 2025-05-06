@@ -114,16 +114,24 @@ Here you need some configuration.
 
 2. Open the `udp_port` set in the configuration on the router, and route incoming requests to your server ip
 
-3. Edit `configs/clients.conf` with the correct IP ranges 
+3. Edit `configs/clients.conf` with the correct IP ranges
+   ```conf
+   AllowedIPs = 10.10.10.0/24, 192.168.0.0/24
+   ```
+   
 4. Edit `configs/wg-dashboard.ini` with the correct IP ranges
+   ```conf
+   peer_global_dns = 192.168.0.101 # pihole dns
+   peer_endpoint_allowed_ip = 10.10.10.0/24, 192.168.0.0/24
+   ```
 
-4. Then you can build the image
+5. Then you can build the image
     ```bash
     cd 103_docker_registry/images
     bash build_distro.sh
     ```
 
-5. And apply configuration
+6. And apply configuration
    ```bash
    cd ..
    terraform init
