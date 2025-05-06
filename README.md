@@ -209,3 +209,16 @@ terraform init
 terraform apply
 ```
 
+## Authentik
+
+This module installs authentik as authentication provider,
+used later to use the same users across multiple applications.
+
+```bash
+cd 204_auth
+terraform init
+terraform apply
+```
+
+
+
