@@ -141,7 +141,7 @@ Here you need some configuration.
 The configuration generates some artifacts in the build folder, including the qrcode you
 can use to test the vpn with your phone.
 
-## Kubernetes
+## Kubernetes VM
 
 This module setups a kubernetes VM used for userspace applications.
 
@@ -166,5 +166,20 @@ You can use the exported kubeconfig to interact with the cluster
 ```bash
 export KUBECONFIG=./build/kubeconfig.yaml
 kubectl get all -A
+```
+
+## Kubernetes initialization
+
+This module initializes kubernetes cluster with some utilities:
+- traefik
+- cert-manager
+- trust-manager
+- kyverno (useful to attach root ca to all containers)
+- nfs provisioner
+
+```bash
+cd 201_kub_init
+terraform init
+terraform apply
 ```
 
