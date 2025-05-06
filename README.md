@@ -220,5 +220,43 @@ terraform init
 terraform apply
 ```
 
+## Authentik configuration
 
+This module configures authentik with users and other common providers,
+We move those configuration in another module because we use the authentik terraform
+provider.
+
+```bash
+cd 205_auth_config
+terraform init
+terraform apply
+```
+
+### Add users
+
+Users within `users.tf` configuration are automatically added to authentik
+
+### Ldap configuration
+
+Whenever is possible we try to use oauth2 but some services implements
+only ldap, thus we configure ldap with the correct flow and server account.
+
+> Note: this configuration works with calibre-web ldap
+
+There is a downside here related to kubernetes integration.
+
+Within `ldap.tf` you can see
+
+```terraform
+service_connection = local.ldap.kubernetes_integration_id # kubernetes integration
+```
+
+and in `vars.tf`
+
+```terraform
+ kubernetes_integration_id = "e1b61f51-eb54-4b0b-a4d2-42f148242be3" 
+```
+
+this is the hardcoded identifier of the kubernetes integration. You can
+eventually remove `service_connection` and insert it manually later from the gui.
 
