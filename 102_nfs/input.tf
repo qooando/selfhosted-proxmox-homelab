@@ -20,7 +20,7 @@ variable "nfs" {
     container_id = number
   })
   default = {
-    ip           = "192.168.0.4"
+    ip           = "192.168.0.102"
     sub_hostname = "nfs"
     container_id = 102
   }
