@@ -1,0 +1,5 @@
+# https://github.com/gethomepage/homepage
+# https://gethomepage.dev/configs/settings/
+title: "homelab.local"
+description: "Rivendell Services"
+headerStyle: clean

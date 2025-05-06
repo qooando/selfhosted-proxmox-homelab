@@ -102,7 +102,7 @@ blockTTL = 2
 #
 # Possible values are:
 #     Array of custom DNS records each one in HOSTS form: "IP HOSTNAME"
-hosts = ${hosts}
+hosts = ${ hosts }
 
 # If set, A and AAAA queries for plain names, without dots or domain parts, are never
 # forwarded to upstream nameservers

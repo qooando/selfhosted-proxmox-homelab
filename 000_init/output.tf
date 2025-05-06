@@ -13,7 +13,7 @@ resource "local_file" "vars_yaml" {
   content = yamlencode(merge(
     local.homelab,
     {
-      gui_hostname = "homelab.${local.homelab.hostname}",
+      gui_hostname = "proxmox.${local.homelab.hostname}",
       "ca_cert"    = local_file.ca_cert.filename
       "ca_key"     = local_file.ca_key.filename
     }

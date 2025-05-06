@@ -1,0 +1,35 @@
+# https://gethomepage.dev/configs/services/#descriptions
+- Applications:
+    - Homepage:
+        - icon: homepage
+          href: https://homepage.homelab.local
+    - Nextcloud:
+        #        - icon: mdi-folder
+        - icon: nextcloud
+          href: https://drive.homelab.local
+    - Immich:
+        - icon: immich
+          href: https://photos.homelab.local
+    - Calibre:
+        - icon: calibre
+          href: https://books.homelab.local
+- Development:
+    - Gitea:
+        - icon: gitea
+          href: https://git.homelab.local
+- Management:
+    - ProxMox:
+        - icon: proxmox
+          href: https://proxmox.homelab.local:8006
+    - Pi-hole:
+        - icon: pi-hole
+          href: https://pihole.homelab.local/admin
+    - Wireguard:
+        - icon: wireguard
+          href: http://wireguard.homelab.local:10086
+    - Traefik:
+        - icon: traefik
+          href: https://traefik.homelab.local
+    - Authentik:
+        - icon: authentik
+          href: http://auth.homelab.local

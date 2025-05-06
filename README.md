@@ -319,3 +319,15 @@ terraform apply
 ### LDAP
 
 You need to configure ldap manually, configuration values are available in `calibre.vars.yaml` file.
+
+## Homepage
+
+This modules installs a homepage with links.
+
+You can access it at `https://hoempage.homelab.local`
+
+```bash
+cd 300_homepage
+terraform init
+terraform apply
+```
