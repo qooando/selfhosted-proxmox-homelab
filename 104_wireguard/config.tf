@@ -14,6 +14,10 @@ resource "null_resource" "wireguard-keys" {
   }
 }
 
+resource "random_password" "wg-dashboard" {
+  length = 32
+}
+
 data "local_file" "server-private-key" {
   depends_on = [
     null_resource.wireguard-keys
@@ -54,6 +58,7 @@ locals {
     port           = local.wireguard.udp_port
     public_gateway = local.wireguard.public_gateway_host
     public_port    = local.wireguard.udp_port
+    admin_password_bcrypt = random_password.wg-dashboard.bcrypt_hash
   }
   wireguard_client_conf = templatefile(local.client_conf_path, local.conf_variables)
   wireguard_sever_conf = templatefile(local.server_conf_path, local.conf_variables)

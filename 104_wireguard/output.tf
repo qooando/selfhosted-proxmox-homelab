@@ -7,12 +7,13 @@ resource local_file "ssh_private_key" {
 resource "local_file" "wireguard_yaml" {
   filename = "${local.build_path}/wireguard.vars.yaml"
   content = yamlencode({
-    "ip"           = local.wireguard.ip
-    "hostname"     = local.wireguard.hostname
-    "ssh_username" = local.wireguard.ssh_username
-    "ssh_password" = random_password.ssh_password.result
-    "ssh_key_file" = local_file.ssh_private_key.filename
-    "vpn_udp_port" = local.wireguard.udp_port
+    "ip"             = local.wireguard.ip
+    "hostname"       = local.wireguard.hostname
+    "ssh_username"   = local.wireguard.ssh_username
+    "ssh_password"   = random_password.ssh_password.result
+    "ssh_key_file"   = local_file.ssh_private_key.filename
+    "vpn_udp_port"   = local.wireguard.udp_port,
+    "admin_password" = random_password.wg-dashboard.result
   })
 }
 
